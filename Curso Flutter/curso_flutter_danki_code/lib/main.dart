@@ -5,28 +5,16 @@ void main() {
     MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Exemplo Scaffold"),
-          backgroundColor: Colors.green,
-        ),
-        body: Container(
-          color: Colors.white,
-          child: Column(
-            children: const [
-              Text(
-                "Teste de Scaffold",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.green,
-                  letterSpacing: 0,
-                  fontWeight: FontWeight.bold,
-                  wordSpacing: 15,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ],
+      home: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            width: 5,
+            color: Colors.green,
           ),
+        ),
+        child: const Image(
+          image: AssetImage("images/mario.jpg"),
+          fit: BoxFit.contain,
         ),
       ),
     ),
