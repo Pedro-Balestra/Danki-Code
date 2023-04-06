@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -71,10 +72,10 @@ class _HomeState extends State<Home> {
               ),
               Text(
                 fraseDaSorte,
-                style: const TextStyle(
+                textAlign: TextAlign.center,
+                style: GoogleFonts.pacifico(
                   fontSize: 20,
                 ),
-                textAlign: TextAlign.center,
               ),
               ElevatedButton(
                 onPressed: quebrarBiscoito,
