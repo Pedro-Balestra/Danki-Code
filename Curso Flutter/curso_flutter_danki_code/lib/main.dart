@@ -6,15 +6,19 @@ void main() {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       home: Container(
+        padding: const EdgeInsets.only(top: 30),
         decoration: BoxDecoration(
           border: Border.all(
             width: 5,
             color: Colors.green,
           ),
         ),
-        child: const Image(
-          image: AssetImage("images/mario.jpg"),
-          fit: BoxFit.contain,
+        child: Column(
+          children: const [
+            Text("Teste01"),
+            Text("Teste02"),
+            Text("Teste03"),
+          ],
         ),
       ),
     ),
