@@ -5,29 +5,29 @@ void main() {
     MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 5,
-            color: Colors.green,
-          ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Manipulando botões"),
+          backgroundColor: Colors.black,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Text(
-              "01",
-              style: TextStyle(fontSize: 30),
-            ),
-            Text(
-              "02",
-              style: TextStyle(fontSize: 30),
-            ),
-            Text(
-              "03",
-              style: TextStyle(fontSize: 30),
-            ),
+        body: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: TextButton(
+                onPressed: () {
+                  print("Clicou no botão");
+                },
+                style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.purple),
+                child: const Text(
+                  "Calcular",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            )
           ],
         ),
       ),
