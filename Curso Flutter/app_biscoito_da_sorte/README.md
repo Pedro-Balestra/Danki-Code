@@ -52,8 +52,8 @@ As seguintes bibliotecas foram usadas na construção do projeto:
 <p align="center" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
     <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
     <img alt="" style="margin-right: 10px"
-    src="images/Tela1.png" width="200px">
-    <img alt="" style="margin-right: 10px" src="images/Tela2.png" width="200px">
+    src="images/layout1.png" width="200px">
+    <img alt="" style="margin-right: 10px" src="images/layout2.png" width="200px">
 </p>
 
 ---
