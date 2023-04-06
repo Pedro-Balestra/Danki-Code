@@ -6,18 +6,28 @@ void main() {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       home: Container(
-        padding: const EdgeInsets.only(top: 30),
         decoration: BoxDecoration(
           border: Border.all(
             width: 5,
             color: Colors.green,
           ),
         ),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: const [
-            Text("Teste01"),
-            Text("Teste02"),
-            Text("Teste03"),
+            Text(
+              "01",
+              style: TextStyle(fontSize: 30),
+            ),
+            Text(
+              "02",
+              style: TextStyle(fontSize: 30),
+            ),
+            Text(
+              "03",
+              style: TextStyle(fontSize: 30),
+            ),
           ],
         ),
       ),
