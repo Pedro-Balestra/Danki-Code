@@ -2,17 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    //declarando uma variavel
-    var total = " ?";
+  State<Home> createState() => _HomeState();
+}
 
+class _HomeState extends State<Home> {
+  var total = "?";
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Exemplo Stateless"),
+        title: const Text("Exemplo Statefull"),
       ),
       body: Center(
         child: Padding(
@@ -28,7 +32,9 @@ class Home extends StatelessWidget {
               Text("30 + 20 = $total", style: const TextStyle(fontSize: 30)),
               ElevatedButton(
                 onPressed: () {
-                  print("Clicou no botão");
+                  setState(() {
+                    total = "50";
+                  });
                 },
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
