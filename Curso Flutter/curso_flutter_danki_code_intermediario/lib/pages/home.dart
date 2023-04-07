@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/widget_appbar.dart';
-
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -14,38 +12,385 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: meuAppBar(),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
+        appBar: AppBar(
+          title: const Text("Manipulando ListView"),
+          backgroundColor: Colors.indigoAccent,
+        ),
+        body: ListView(
           children: [
-            Container(
-              width: 200,
-              color: Colors.green,
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
             ),
-            Container(
-              width: 200,
-              color: Colors.red,
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
             ),
-            Container(
-              width: 200,
-              color: Colors.orange,
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
             ),
-            Container(
-              width: 200,
-              color: Colors.yellow,
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
             ),
-            Container(
-              width: 200,
-              color: Colors.blue,
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
             ),
-            Container(
-              width: 200,
-              color: Colors.black,
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
+            ),
+            ListTile(
+              title: const Text("Pedro Balestra"),
+              subtitle: const Text("(35) 99999999999"),
+              leading: const Icon(Icons.person),
+              trailing: const Icon(Icons.phone),
+              onLongPress: () {
+                print("Clicou OnlongPress");
+              },
+              onTap: () {
+                print("Clicou OnlongPress");
+              },
             ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
