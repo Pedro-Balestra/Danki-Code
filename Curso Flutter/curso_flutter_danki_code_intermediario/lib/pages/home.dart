@@ -9,6 +9,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool cksalada = false;
+  bool ckbacon = false;
+  bool cktudo = false;
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +20,41 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.green,
       ),
       body: Container(
-        padding: const EdgeInsets.all(80),
+        //  padding: const EdgeInsets.all(80),
         child: Column(
           children: [
-            const Text("Lache X Salada"),
-            Checkbox(
+            CheckboxListTile(
+              title: const Text("X Salada"),
+              subtitle: const Text("O lanche mais completo de salada"),
+              secondary: const Icon(Icons.food_bank_rounded),
               value: cksalada,
               onChanged: (bool? valor) {
                 setState(() {
                   cksalada = valor ?? false;
+                });
+              },
+              activeColor: Colors.red,
+            ),
+            CheckboxListTile(
+              title: const Text("X Bacon"),
+              subtitle: const Text("O lanche mais completo de bacon"),
+              secondary: const Icon(Icons.food_bank_rounded),
+              value: ckbacon,
+              onChanged: (bool? valor) {
+                setState(() {
+                  ckbacon = valor ?? false;
+                });
+              },
+              activeColor: Colors.red,
+            ),
+            CheckboxListTile(
+              title: const Text("X Tudo"),
+              subtitle: const Text("O lanche mais completo"),
+              secondary: const Icon(Icons.food_bank_rounded),
+              value: cktudo,
+              onChanged: (bool? valor) {
+                setState(() {
+                  cktudo = valor ?? false;
                 });
               },
               activeColor: Colors.red,
