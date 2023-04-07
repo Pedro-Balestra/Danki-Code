@@ -8,56 +8,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String? opescolhida;
+  bool opescolhida = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Exemplo RadioListTile"),
+        title: const Text("Exemplo Switch"),
         backgroundColor: Colors.green,
       ),
-      body: Column(
+      body: Row(
         children: [
-          RadioListTile(
-            title: const Text("Java"),
-            subtitle: const Text("Linguagem de Oracle"),
-            secondary: const Icon(Icons.javascript_sharp),
-            activeColor: Colors.yellow,
-            value: "Java",
-            groupValue: opescolhida,
-            onChanged: (String? valor) {
+          const Text("Salvar imagens"),
+          Switch(
+            activeColor: Colors.green,
+            value: opescolhida,
+            onChanged: (bool? valor) {
+              print("Selecionou: " + valor.toString());
               setState(() {
                 opescolhida = valor!;
-                print(opescolhida);
-              });
-            },
-          ),
-          RadioListTile(
-            title: const Text("PHP"),
-            subtitle: const Text("Linguagem de Rasmus Lerdorf"),
-            secondary: const Icon(Icons.php_outlined),
-            activeColor: Colors.purple,
-            value: "PHP",
-            groupValue: opescolhida,
-            onChanged: (String? valor) {
-              setState(() {
-                opescolhida = valor!;
-                print(opescolhida);
-              });
-            },
-          ),
-          RadioListTile(
-            title: const Text("Flutter"),
-            subtitle: const Text("Linguagem de Google"),
-            secondary: const Icon(Icons.facebook_outlined),
-            activeColor: Colors.blue,
-            value: "Flutter",
-            groupValue: opescolhida,
-            onChanged: (String? valor) {
-              setState(() {
-                opescolhida = valor!;
-                print(opescolhida);
               });
             },
           ),
