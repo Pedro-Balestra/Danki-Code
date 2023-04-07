@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/widget_appbar.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -12,10 +14,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Exemplo SingleChildScrollView"),
-        backgroundColor: Colors.deepPurple,
-      ),
+      appBar: meuAppBar(),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
