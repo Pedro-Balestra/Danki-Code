@@ -14,12 +14,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Exemplo RadioButton"),
+        title: const Text("Exemplo RadioListTile"),
         backgroundColor: Colors.green,
       ),
-      body: Row(
+      body: Column(
         children: [
-          Radio(
+          RadioListTile(
+            title: const Text("Java"),
+            subtitle: const Text("Linguagem de Oracle"),
+            secondary: const Icon(Icons.javascript_sharp),
             activeColor: Colors.yellow,
             value: "Java",
             groupValue: opescolhida,
@@ -30,8 +33,10 @@ class _HomeState extends State<Home> {
               });
             },
           ),
-          const Text("Java"),
-          Radio(
+          RadioListTile(
+            title: const Text("PHP"),
+            subtitle: const Text("Linguagem de Rasmus Lerdorf"),
+            secondary: const Icon(Icons.php_outlined),
             activeColor: Colors.purple,
             value: "PHP",
             groupValue: opescolhida,
@@ -42,8 +47,10 @@ class _HomeState extends State<Home> {
               });
             },
           ),
-          const Text("PHP"),
-          Radio(
+          RadioListTile(
+            title: const Text("Flutter"),
+            subtitle: const Text("Linguagem de Google"),
+            secondary: const Icon(Icons.facebook_outlined),
             activeColor: Colors.blue,
             value: "Flutter",
             groupValue: opescolhida,
@@ -54,7 +61,6 @@ class _HomeState extends State<Home> {
               });
             },
           ),
-          const Text("Flutter")
         ],
       ),
     );
