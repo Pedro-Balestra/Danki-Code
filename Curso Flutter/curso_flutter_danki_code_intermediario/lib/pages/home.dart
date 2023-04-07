@@ -8,58 +8,32 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool op1 = false;
-  bool op2 = false;
-  bool op3 = false;
-
+  double valor = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Exemplo SwitchLitTile"),
+        title: const Text("Exemplo Slider"),
         backgroundColor: Colors.green,
       ),
       body: Column(
         children: [
-          SwitchListTile(
-            title: const Text("Salvar mensagens"),
-            subtitle: const Text("Salva as mensagens no celular"),
-            secondary: const Icon(Icons.favorite, color: Colors.red),
-            activeColor: Colors.green,
-            value: op1,
-            onChanged: (bool? valor) {
-              print("Selecionou: " + valor.toString());
+          Slider(
+            value: valor,
+            onChanged: (double novoValor) {
               setState(() {
-                op1 = valor!;
+                valor = novoValor;
               });
             },
+            min: 0,
+            max: 100,
+            label: "$valor",
+            //divisions: 10,
+            activeColor: Colors.red,
+            inactiveColor: Colors.red[100],
           ),
-          SwitchListTile(
-            title: const Text("Salvar mensagens"),
-            subtitle: const Text("Salva as mensagens no celular"),
-            secondary: const Icon(Icons.favorite, color: Colors.red),
-            activeColor: Colors.green,
-            value: op2,
-            onChanged: (bool? valor) {
-              print("Selecionou: " + valor.toString());
-              setState(() {
-                op2 = valor!;
-              });
-            },
-          ),
-          SwitchListTile(
-            title: const Text("Salvar mensagens"),
-            subtitle: const Text("Salva as mensagens no celular"),
-            secondary: const Icon(Icons.favorite, color: Colors.red),
-            activeColor: Colors.green,
-            value: op3,
-            onChanged: (bool? valor) {
-              print("Selecionou: " + valor.toString());
-              setState(() {
-                op3 = valor!;
-              });
-            },
-          ),
+          Text("Valor selecionado: ${valor.toStringAsFixed(2)}",
+              style: const TextStyle(fontSize: 20)),
         ],
       ),
     );
