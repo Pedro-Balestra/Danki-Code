@@ -13,28 +13,39 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Exemplo Slider"),
-        backgroundColor: Colors.green,
+        title: const Text("Exemplo SingleChildScrollView"),
+        backgroundColor: Colors.deepPurple,
       ),
-      body: Column(
-        children: [
-          Slider(
-            value: valor,
-            onChanged: (double novoValor) {
-              setState(() {
-                valor = novoValor;
-              });
-            },
-            min: 0,
-            max: 100,
-            label: "$valor",
-            //divisions: 10,
-            activeColor: Colors.red,
-            inactiveColor: Colors.red[100],
-          ),
-          Text("Valor selecionado: ${valor.toStringAsFixed(2)}",
-              style: const TextStyle(fontSize: 20)),
-        ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Container(
+              width: 200,
+              color: Colors.green,
+            ),
+            Container(
+              width: 200,
+              color: Colors.red,
+            ),
+            Container(
+              width: 200,
+              color: Colors.orange,
+            ),
+            Container(
+              width: 200,
+              color: Colors.yellow,
+            ),
+            Container(
+              width: 200,
+              color: Colors.blue,
+            ),
+            Container(
+              width: 200,
+              color: Colors.black,
+            ),
+          ],
+        ),
       ),
     );
   }
