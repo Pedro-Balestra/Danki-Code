@@ -8,72 +8,54 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool cksalada = false;
-  bool ckbacon = false;
-  bool cktudo = false;
+  String? opescolhida;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Exemplo CheckBox"),
+        title: const Text("Exemplo RadioButton"),
         backgroundColor: Colors.green,
       ),
-      body: Container(
-        //  padding: const EdgeInsets.all(80),
-        child: Column(
-          children: [
-            CheckboxListTile(
-              title: const Text("X Salada"),
-              subtitle: const Text("O lanche mais completo de salada"),
-              secondary: const Icon(Icons.food_bank_rounded),
-              value: cksalada,
-              onChanged: (bool? valor) {
-                setState(() {
-                  cksalada = valor ?? false;
-                });
-              },
-              activeColor: Colors.red,
-            ),
-            CheckboxListTile(
-              title: const Text("X Bacon"),
-              subtitle: const Text("O lanche mais completo de bacon"),
-              secondary: const Icon(Icons.food_bank_rounded),
-              value: ckbacon,
-              onChanged: (bool? valor) {
-                setState(() {
-                  ckbacon = valor ?? false;
-                });
-              },
-              activeColor: Colors.red,
-            ),
-            CheckboxListTile(
-              title: const Text("X Tudo"),
-              subtitle: const Text("O lanche mais completo"),
-              secondary: const Icon(Icons.food_bank_rounded),
-              value: cktudo,
-              onChanged: (bool? valor) {
-                setState(() {
-                  cktudo = valor ?? false;
-                });
-              },
-              activeColor: Colors.red,
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (cksalada) {
-                  print("O check box foi selecionado");
-                } else {
-                  print("Check box desmarcado");
-                }
-              },
-              child: const Text("Exibir"),
-            ),
-          ],
-        ),
+      body: Row(
+        children: [
+          Radio(
+            activeColor: Colors.yellow,
+            value: "Java",
+            groupValue: opescolhida,
+            onChanged: (String? valor) {
+              setState(() {
+                opescolhida = valor!;
+                print(opescolhida);
+              });
+            },
+          ),
+          const Text("Java"),
+          Radio(
+            activeColor: Colors.purple,
+            value: "PHP",
+            groupValue: opescolhida,
+            onChanged: (String? valor) {
+              setState(() {
+                opescolhida = valor!;
+                print(opescolhida);
+              });
+            },
+          ),
+          const Text("PHP"),
+          Radio(
+            activeColor: Colors.blue,
+            value: "Flutter",
+            groupValue: opescolhida,
+            onChanged: (String? valor) {
+              setState(() {
+                opescolhida = valor!;
+                print(opescolhida);
+              });
+            },
+          ),
+          const Text("Flutter")
+        ],
       ),
     );
   }
