@@ -1,4 +1,4 @@
-<h1 align="center">Search Facul</h1>
+<h1 align="center">Biscoito da Sorte</h1>
 <h1 align="center">
     <img align="center" src="images/lucky.png" width="300px;" alt="logo"/>
 </h1>
