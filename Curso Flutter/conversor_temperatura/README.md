@@ -1,4 +1,4 @@
-<h1 align="center">Search Facul</h1>
+<h1 align="center">Conversor de Temperatura</h1>
 <h1 align="center">
     <img align="center" src="images/temperature.png" width="300px;" alt="logo"/>
 </h1>
@@ -65,12 +65,9 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 ```bash
 
 # Clone este repositório
-$ git clone https://github.com/Pedro-Balestra/Danki-Code/tree/main/Curso%20Flutter/app_biscoito_da_sorte.git
+$ git clone https://github.com/Pedro-Balestra/Danki-Code/tree/main/Curso%20Flutter/conversor_temperatura.git
 
 # Acesse a pasta do projeto
-
-# Instale as dependências
-$flutter pub add google_fonts
 
 # Abra o emulador 
 
