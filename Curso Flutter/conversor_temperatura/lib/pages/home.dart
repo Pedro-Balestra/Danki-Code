@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,12 +8,30 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  //Criando os Controllers
+  TextEditingController txtcelxius = TextEditingController();
+  TextEditingController txtfa = TextEditingController();
+
+  void calcularTemperatura() {
+    setState(() {
+      double c, f;
+
+      //recber os dados de Celsius
+      c = double.parse(txtcelxius.text);
+
+      //Calculo
+      f = (c * 9 / 5) + 32;
+
+      txtfa.text = f.toStringAsFixed(2);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF003366),
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Padding(
             padding: const EdgeInsets.only(top: 80, left: 10, right: 10),
@@ -42,14 +58,15 @@ class _HomeState extends State<Home> {
                 const SizedBox(
                   height: 20,
                 ),
-                const TextField(
+                TextField(
+                  controller: txtcelxius,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     labelText: "Entre com um temperatura em Celsius",
                   ),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                   ),
@@ -57,15 +74,16 @@ class _HomeState extends State<Home> {
                 const SizedBox(
                   height: 20,
                 ),
-                const TextField(
+                TextField(
+                  controller: txtfa,
                   readOnly: true,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     labelText: "Temperatura em Fahrenheit ",
                   ),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                   ),
@@ -77,7 +95,9 @@ class _HomeState extends State<Home> {
                   width: double.infinity,
                   height: 60,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      calcularTemperatura();
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF005CB9),
                         foregroundColor: Colors.white),
@@ -91,7 +111,10 @@ class _HomeState extends State<Home> {
                   width: double.infinity,
                   height: 60,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      txtcelxius.clear();
+                      txtfa.clear();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white,
