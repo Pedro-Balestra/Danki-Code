@@ -11,6 +11,7 @@ class _HomeState extends State<Home> {
   //Criando os Controllers
   TextEditingController txtcelxius = TextEditingController();
   TextEditingController txtfa = TextEditingController();
+  final _formkey = GlobalKey<FormState>();
 
   void calcularTemperatura() {
     setState(() {
@@ -58,7 +59,8 @@ class _HomeState extends State<Home> {
                 const SizedBox(
                   height: 20,
                 ),
-                TextField(
+                TextFormField(
+                  key: _formkey,
                   controller: txtcelxius,
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
@@ -70,6 +72,13 @@ class _HomeState extends State<Home> {
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                   ),
+                  validator: (valor) {
+                    if (valor!.isEmpty) {
+                      return "Campo obrigatório";
+                    } else {
+                      return null;
+                    }
+                  },
                 ),
                 const SizedBox(
                   height: 20,
@@ -96,7 +105,9 @@ class _HomeState extends State<Home> {
                   height: 60,
                   child: ElevatedButton(
                     onPressed: () {
-                      calcularTemperatura();
+                      if (_formkey.currentState!.validate() != Null) {
+                        calcularTemperatura();
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF005CB9),
