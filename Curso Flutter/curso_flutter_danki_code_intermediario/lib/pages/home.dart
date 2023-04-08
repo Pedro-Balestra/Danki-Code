@@ -15,11 +15,63 @@ class _HomeState extends State<Home> {
     {"name": "Mortadela", "preco": 54.00, "foto": "images/mortadela.jpg"},
     {"name": "Misto Quente", "preco": 4.00, "foto": "images/mistoquente.jpg"},
   ];
+
+//Exibir uma caixa de Dialogo
+  void exibirAlerta(String nome, String preco) {
+    showDialog(
+      context: context,
+      builder: (
+        context,
+      ) {
+        return AlertDialog(
+          title: const Text("Produto Selecionado"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("Produto: $nome"),
+              Text("Produto: $preco"),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                print("Clicou no Salvar");
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.indigo,
+              ),
+              child: const Text(
+                "Salvar",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                print("Clicou no Cancelar");
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
+              child: const Text(
+                "Cancelar",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            )
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Manipulando ListView.Builder"),
+        title: const Text("Manipulando caixas de diálogo"),
         backgroundColor: Colors.indigoAccent,
       ),
       body: ListView.builder(
@@ -30,9 +82,15 @@ class _HomeState extends State<Home> {
             margin: const EdgeInsets.all(10),
             child: Column(
               children: [
-                Image.asset(
-                  listaProdutos[index]["foto"].toString(),
-                  fit: BoxFit.cover,
+                InkWell(
+                  onTap: () {
+                    exibirAlerta(listaProdutos[index]["name"].toString(),
+                        listaProdutos[index]["preco"].toString());
+                  },
+                  child: Image.asset(
+                    listaProdutos[index]["foto"].toString(),
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 Text(
                   listaProdutos[index]["name"].toString(),
