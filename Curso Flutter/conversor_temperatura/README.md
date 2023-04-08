@@ -51,7 +51,7 @@ As seguintes bibliotecas foram usadas na construção do projeto:
 <p align="center" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
     <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
     <img alt="" style="margin-right: 10px"
-    src="images/sreen.png" width="200px">
+    src="images/screen.png" width="200px">
 </p>
 
 ---
