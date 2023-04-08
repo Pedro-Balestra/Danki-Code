@@ -32,11 +32,7 @@ As seguintes ferramentas foram utilizadas na construção do projeto:
 
 ## 📚 Bibliotecas
 
-As seguintes bibliotecas foram usadas na construção do projeto:
-- **[Math](https://api.dart.dev/stable/2.19.4/dart-math/dart-math-library.html)**
-- **[Google Fonts](https://pub.dev/packages/google_fonts)**
-
-> Veja o arquivo  **[pubspec.ymal](https://github.com/Pedro-Balestra/Danki-Code/blob/main/Curso%20Flutter/app_biscoito_da_sorte/pubspec.yaml)**
+> Veja o arquivo  **[pubspec.ymal](https://github.com/Pedro-Balestra/Danki-Code/blob/main/Curso%20Flutter/conversor_temperatura/pubspec.yaml)**
 
 ### Utilitários
 
