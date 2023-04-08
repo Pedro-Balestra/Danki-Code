@@ -1,6 +1,6 @@
-<h1 align="center">Search Facul</h1>
+<h1 align="center">Racha Conta</h1>
 <h1 align="center">
-    <img align="center" src="images/icon_money.png" width="300px;" alt="logo"/>
+    <img align="center" src="assets/icon_money.png" width="300px;" alt="logo"/>
 </h1>
 <h3 align="center">✅ Concluído ✅</h3>
 <!-- <h3 align="center">🛠 Em Desenvolvimento 🛠</h3> -->
@@ -44,10 +44,10 @@ As seguintes ferramentas foram utilizadas na construção do projeto:
 <p align="center" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
     <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
     <img alt="" style="margin-right: 10px"
-    src="images/tela1.png" width="200px">
-    <img alt="" style="margin-right: 10px" src="images/tela2.png" width="200px">
-    <img alt="" style="margin-right: 10px" src="images/tela3.png" width="200px">
-    <img alt="" style="margin-right: 10px" src="images/tela4.png" width="200px">
+    src="assets/tela1.png" width="200px">
+    <img alt="" style="margin-right: 10px" src="assets/tela2.png" width="200px">
+    <img alt="" style="margin-right: 10px" src="assets/tela3.png" width="200px">
+    <img alt="" style="margin-right: 10px" src="assets/tela4.png" width="200px">
 </p>
 
 ---
