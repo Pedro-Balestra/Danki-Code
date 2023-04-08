@@ -101,7 +101,12 @@ class _HomeState extends State<Home> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF005CB9),
                         foregroundColor: Colors.white),
-                    child: const Text("Converter"),
+                    child: const Text(
+                      "Converter",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -119,9 +124,14 @@ class _HomeState extends State<Home> {
                       backgroundColor: Colors.red,
                       foregroundColor: Colors.white,
                     ),
-                    child: const Text("Limpar"),
+                    child: const Text(
+                      "Limpar",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
-                ),
+                )
               ],
             ),
           ),

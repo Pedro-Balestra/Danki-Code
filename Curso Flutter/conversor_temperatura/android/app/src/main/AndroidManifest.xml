@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.conversor_temperatura">
    <application
-        android:label="conversor_temperatura"
+        android:label="Conversor de Temperatura"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
