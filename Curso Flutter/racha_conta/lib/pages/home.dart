@@ -11,6 +11,70 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   //Variaveis
   double taxa = 0;
+  double totalconta = 0, totalpagar = 0, comissao = 0;
+  int qntpessoas = 0;
+
+  //Criando os TextControllers
+  TextEditingController txtTotal = TextEditingController();
+  TextEditingController txtQtd = TextEditingController();
+
+  void calcularConta() {
+    // 1 passo - Receber os valores
+    setState(
+      () {
+        totalconta = double.parse(txtTotal.text);
+        qntpessoas = int.parse(txtQtd.text);
+
+        // 2 passo - Calcular a comissao do garçon
+        comissao = (taxa * totalconta) / 100;
+
+        // 3 passo - Calcular o total por pessoa
+        totalpagar = (totalconta + comissao) / qntpessoas;
+
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text("Total a pagar por pessoa"),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  "assets/smile.png",
+                  width: 60,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "O TOTAL DA CONTA: R\$ $totalconta",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "TAXA DO GARÇOM: R\$ $comissao",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "TOTAL POR PESSOA: R\$ $totalpagar",
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                style: TextButton.styleFrom(
+                    backgroundColor: const Color(0xffff6600),
+                    foregroundColor: Colors.white),
+                child: const Text("OK!"),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,70 +86,85 @@ class _HomeState extends State<Home> {
       ),
       body: SingleChildScrollView(
         child: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 40, left: 130, right: 130),
-                child: Image.asset("assets/icon_money.png"),
-              ),
-              const TextField(
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  labelText: "Total da conta",
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.only(top: 40, left: 130, right: 130),
+                  child: Image.asset("assets/icon_money.png"),
                 ),
-                style: TextStyle(fontSize: 18),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Text(
-                    "Taxa de Serviços %: ",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+                const SizedBox(
+                  height: 10,
+                ),
+                TextField(
+                  controller: txtTotal,
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(
+                    labelText: "Total da conta",
+                  ),
+                  style: const TextStyle(fontSize: 18),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const Text(
+                      "Taxa de Serviços %: ",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Slider(
+                      value: taxa,
+                      min: 0,
+                      max: 10,
+                      label: "Taxa $taxa %",
+                      divisions: 10,
+                      activeColor: const Color(0xffff6600),
+                      inactiveColor: Colors.orange[100],
+                      onChanged: (double valor) {
+                        setState(() {
+                          taxa = valor;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                TextField(
+                  controller: txtQtd,
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(
+                    labelText: "Quantidade de Pessoas",
+                  ),
+                  style: const TextStyle(fontSize: 18),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: calcularConta,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xffff6600),
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Text(
+                      "Calcular",
+                      style: TextStyle(fontSize: 20),
                     ),
                   ),
-                  Slider(
-                    value: taxa,
-                    min: 0,
-                    max: 10,
-                    label: "Taxa $taxa %",
-                    divisions: 10,
-                    activeColor: const Color(0xffff6600),
-                    inactiveColor: Colors.orange[100],
-                    onChanged: (double valor) {
-                      setState(() {
-                        taxa = valor;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              const TextField(
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                decoration: InputDecoration(
-                  labelText: "Quantidade de Pessoas",
                 ),
-                style: TextStyle(fontSize: 18),
-              ),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xffff6600),
-                    foregroundColor: Colors.white,
-                  ),
-                  child: const Text(
-                    "Calcular",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
