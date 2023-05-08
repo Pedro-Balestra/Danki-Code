@@ -1,4 +1,5 @@
 import 'package:app_navegacao/screens/Tela02.dart';
+import 'package:app_navegacao/screens/widget_drawer.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -16,6 +17,7 @@ class _HomeState extends State<Home> {
         title: const Text("Tela Inicial"),
         centerTitle: true,
       ),
+      drawer: menuDrawer(context),
       body: Container(
         padding: const EdgeInsets.all(20),
         child: Column(
