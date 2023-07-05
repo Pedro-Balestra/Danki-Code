@@ -10,6 +10,10 @@ class TelaCadastro extends StatefulWidget {
 }
 
 class _TelaCadastroState extends State<TelaCadastro> {
+  TextEditingController txtnome = TextEditingController();
+  TextEditingController txtfabricante = TextEditingController();
+  TextEditingController txtpreco = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +30,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
           child: Column(
             children: [
               TextFormField(
+                controller: txtnome,
                 keyboardType: TextInputType.text,
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(labelText: "Alimento"),
@@ -35,6 +40,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                 height: 20,
               ),
               TextFormField(
+                controller: txtfabricante,
                 keyboardType: TextInputType.text,
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(labelText: "Fabricante"),
@@ -44,6 +50,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                 height: 20,
               ),
               TextFormField(
+                controller: txtpreco,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(labelText: "Preço"),
@@ -56,12 +63,12 @@ class _TelaCadastroState extends State<TelaCadastro> {
                 height: 40,
                 width: double.infinity,
                 child: ElevatedButton(
-                  child: Text('Adicionar produto'),
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
                     foregroundColor: Colors.white,
                   ),
+                  child: const Text('Adicionar produto'),
                 ),
               )
             ],

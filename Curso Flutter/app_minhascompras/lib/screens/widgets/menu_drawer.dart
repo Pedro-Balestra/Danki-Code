@@ -1,3 +1,4 @@
+import 'package:app_minhascompras/screens/tela_cadastro.dart';
 import 'package:flutter/material.dart';
 
 Widget menuDrawer(BuildContext context) {
@@ -43,15 +44,20 @@ Widget menuDrawer(BuildContext context) {
             ),
           ),
         ),
-        const ListTile(
-          leading: Icon(
+        ListTile(
+          leading: const Icon(
             Icons.add,
             color: Colors.blueGrey,
           ),
-          title: Text(
+          title: const Text(
             'Novo Produto',
             style: TextStyle(fontSize: 16),
           ),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const TelaCadastro()));
+          },
         ),
         const ListTile(
           leading: Icon(
