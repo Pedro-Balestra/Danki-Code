@@ -2,11 +2,11 @@ class Produtos {
   //Atributos
   late int id;
   late String nome;
-  late String fornecedor;
+  late String fabricante;
   late double preco;
 
   //Construtor
-  Produtos(this.id, this.nome, this.fornecedor, this.preco);
+  Produtos(this.id, this.nome, this.fabricante, this.preco);
 
   //Métodos
 
@@ -19,7 +19,7 @@ class Produtos {
     //2 passo - guardar os dados dos atributos no map
     dados['id'] = id;
     dados['nome'] = nome;
-    dados['fornecedor'] = fornecedor;
+    dados['fabricante'] = fabricante;
     dados['preco'] = preco;
     return dados;
   }
@@ -29,7 +29,7 @@ class Produtos {
   Produtos.deMapParaModel(Map<String, dynamic> dados) {
     this.id = dados['id'];
     this.nome = dados['nome'];
-    this.fornecedor = dados['fornecedor'];
+    this.fabricante = dados['fabricante'];
     this.preco = dados['preco'];
   }
 }
