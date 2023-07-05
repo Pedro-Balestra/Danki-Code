@@ -5,6 +5,7 @@ Widget menuDrawer(BuildContext context) {
     child: Column(
       children: [
         Container(
+          padding: const EdgeInsets.all(40),
           width: double.infinity,
           height: 230,
           color: Colors.blueGrey,
@@ -41,7 +42,27 @@ Widget menuDrawer(BuildContext context) {
               ],
             ),
           ),
-        )
+        ),
+        const ListTile(
+          leading: Icon(
+            Icons.add,
+            color: Colors.blueGrey,
+          ),
+          title: Text(
+            'Novo Produto',
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
+        const ListTile(
+          leading: Icon(
+            Icons.food_bank,
+            color: Colors.blueGrey,
+          ),
+          title: Text(
+            'Meus Produtos',
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
       ],
     ),
   );
