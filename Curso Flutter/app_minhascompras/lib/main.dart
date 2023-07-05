@@ -1,4 +1,5 @@
 import 'package:app_minhascompras/screens/home.dart';
+import 'package:app_minhascompras/screens/tela_cadastro.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,10 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        
         primarySwatch: Colors.blue,
       ),
-      home: const Home(),
+      home: const TelaCadastro(),
     );
   }
 }
