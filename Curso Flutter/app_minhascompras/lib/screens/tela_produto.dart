@@ -34,6 +34,12 @@ class _TelaProdutosState extends State<TelaProdutos> {
     });
   }
 
+  //Metodo que remove um produto
+  void removerProduto(int id) async {
+    int resultado = await db.excluirProduto(id);
+    recuperarProdutos();
+  }
+
   void exibirTelaConfirma(int id) {
     showDialog(
       context: context,
@@ -44,7 +50,10 @@ class _TelaProdutosState extends State<TelaProdutos> {
           backgroundColor: Colors.white,
           actions: [
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                removerProduto(id);
+                Navigator.pop(context);
+              },
               style: TextButton.styleFrom(
                 backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
@@ -52,9 +61,11 @@ class _TelaProdutosState extends State<TelaProdutos> {
               child: const Text("SIM"),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               style: TextButton.styleFrom(
-                backgroundColor: Colors.red,
+                backgroundColor: Colors.blueGrey,
                 foregroundColor: Colors.white,
               ),
               child: const Text("NÂO"),
@@ -105,7 +116,7 @@ class _TelaProdutosState extends State<TelaProdutos> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            exibirTelaConfirma(id);
+                            exibirTelaConfirma(p.id!);
                           },
                           child: const Padding(
                             padding: EdgeInsets.only(right: 16.0),
@@ -117,7 +128,7 @@ class _TelaProdutosState extends State<TelaProdutos> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            exibirTelaConfirma(id);
+                            exibirTelaConfirma(p.id!);
                           },
                           child: const Icon(
                             Icons.edit,
