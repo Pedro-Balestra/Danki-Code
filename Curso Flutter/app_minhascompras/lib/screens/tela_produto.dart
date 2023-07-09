@@ -34,6 +34,37 @@ class _TelaProdutosState extends State<TelaProdutos> {
     });
   }
 
+  void exibirTelaConfirma(int id) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Excluir Produto'),
+          content: const Text('Tem certeza que deseja exluir este produto?'),
+          backgroundColor: Colors.white,
+          actions: [
+            TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text("SIM"),
+            ),
+            TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+              ),
+              child: const Text("NÂO"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -73,7 +104,9 @@ class _TelaProdutosState extends State<TelaProdutos> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            exibirTelaConfirma(id);
+                          },
                           child: const Padding(
                             padding: EdgeInsets.only(right: 16.0),
                             child: Icon(
@@ -83,7 +116,9 @@ class _TelaProdutosState extends State<TelaProdutos> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            exibirTelaConfirma(id);
+                          },
                           child: const Icon(
                             Icons.edit,
                             color: Colors.blueGrey,
