@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ProdutosHelpers {
@@ -16,9 +19,21 @@ class ProdutosHelpers {
       $colunaId INTEGER PRIMARY KEY AUTOINCREMENT,
       $colunaNome TEXT,
       $colunaFab TEXT,
-      $colunaPreco float
+      $colunaPreco FLOAT
     )""";
 
     await db.execute(sql);
+  }
+
+  //2 passo - Criar o metodo que inicializa o banco de dados
+  Future<Database> inicializaBanco() async {
+    //Pegar o caminho do Android ou IOS para salvar o banco de dados
+    Directory directory = await getApplicationDocumentsDirectory();
+    String caminho = '${directory.path}bdprodutos.bd';
+
+    var bancoDeDados =
+        await openDatabase(caminho, version: 1, onCreate: _criarBanco);
+
+    return bancoDeDados;
   }
 }
