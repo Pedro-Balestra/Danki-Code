@@ -5,7 +5,18 @@ import 'package:sqflite/sqflite.dart';
 
 class ProdutosHelpers {
   //Atributos
-  late Database _database;
+  static late Database _database;
+  static late ProdutosHelpers _databaseHelper;
+
+  ProdutosHelpers._createInstance();
+
+  factory ProdutosHelpers() {
+    if (_databaseHelper == null) {
+      _databaseHelper = ProdutosHelpers._createInstance();
+    }
+
+    return _databaseHelper;
+  }
 
   //Definir a estrutura da tabela
 
