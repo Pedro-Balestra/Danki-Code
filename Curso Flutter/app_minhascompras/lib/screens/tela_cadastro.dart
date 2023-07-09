@@ -1,4 +1,5 @@
 import 'package:app_minhascompras/model/produtos.dart';
+import 'package:app_minhascompras/screens/home.dart';
 import 'package:app_minhascompras/util/produtosHelpers.dart';
 import 'package:flutter/material.dart';
 
@@ -22,21 +23,40 @@ class _TelaCadastroState extends State<TelaCadastro> {
 
   String textoBotao = "Adicionar Produto";
   String tittleAppBar = "Cadastro de Produto";
+  late int idProduto;
 
-  Future<void> salvarProduto() async {
-    //1 passo - Criar objeto Model para pegar os dados da tela
-    Produtos obj = Produtos(
-      null,
-      txtnome.text,
-      txtfabricante.text,
-      double.parse(txtpreco.text),
-    );
+  void salvarProduto({Produtos? p}) async {
+    //Cadastrando novo produto
+    int resultado;
+    if (p == null) {
+      //1 passo - Criar objeto Model para pegar os dados da tela
+      Produtos obj = Produtos(
+        null,
+        txtnome.text,
+        txtfabricante.text,
+        double.parse(txtpreco.text),
+      );
+      resultado = await db.alterarProduto(obj);
 
-    int? resultado = await db.cadastraProduto(obj);
-    if (resultado != null) {
       print("Cadastrado com sucesso! " + resultado.toString());
     }
-    // Atualizar o estado do widget aqui, se necessário
+    //Estar alterando um produto
+    else {
+      //1 passo - pegar os dados e monta o objeto para alterar
+      p.nome = txtnome.text;
+      p.fabricante = txtfabricante.text;
+      p.preco = double.parse(txtpreco.text);
+      p.id = idProduto;
+
+      resultado = await db.cadastraProduto(p);
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Home(),
+        ),
+      );
+    }
   }
 
   @override
@@ -46,6 +66,8 @@ class _TelaCadastroState extends State<TelaCadastro> {
       txtnome.text = widget.produto!.nome;
       txtfabricante.text = widget.produto!.fabricante;
       txtpreco.text = widget.produto!.preco.toString();
+
+      idProduto = widget.produto!.id!;
 
       textoBotao = "Editar Produto";
       tittleAppBar = "Editar Produto";
@@ -101,7 +123,9 @@ class _TelaCadastroState extends State<TelaCadastro> {
                   height: 40,
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: salvarProduto,
+                    onPressed: () {
+                      salvarProduto(p: widget.produto);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blueGrey,
                       foregroundColor: Colors.white,
