@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../model/produtos.dart';
+
 class ProdutosHelpers {
   //Atributos
   static late Database _database;
@@ -55,6 +57,18 @@ class ProdutosHelpers {
   Future<Database> get database async {
     if (_database == null) {
       _database = await inicializaBanco();
+    }
+
+    //Metodos CRUD
+    //Creat, Read, Update e Delete
+
+    //Metodo CadastrarProdutos
+    Future<int> cadastraProduto(Produtos obj) async {
+      //1 passo -Selecionar o banco
+      Database db = await this.database;
+      var resposta = await db.insert(nomeTabela, obj.toMap());
+
+      return resposta;
     }
 
     return _database;
