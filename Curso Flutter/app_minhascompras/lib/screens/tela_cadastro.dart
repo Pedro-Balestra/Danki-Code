@@ -1,6 +1,8 @@
+import 'package:app_minhascompras/model/produtos.dart';
+import 'package:app_minhascompras/util/produtosHelpers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
+import '../util/produtosHelpers.dart';
 
 class TelaCadastro extends StatefulWidget {
   const TelaCadastro({super.key});
@@ -13,6 +15,27 @@ class _TelaCadastroState extends State<TelaCadastro> {
   TextEditingController txtnome = TextEditingController();
   TextEditingController txtfabricante = TextEditingController();
   TextEditingController txtpreco = TextEditingController();
+
+  ProdutosHelpers db = ProdutosHelpers();
+
+  Future<void> salvarProduto() async {
+    //1 passo - Criar objeto Model para pegar os dados da tela
+    Produtos obj = Produtos(
+      null,
+      txtnome.text,
+      txtfabricante.text,
+      double.parse(txtpreco.text),
+    );
+
+    int resultado = await db.cadastraProduto(obj);
+    if (resultado != null) {
+      print("Cadastrado com sucesso! " + resultado.toString());
+    }
+
+    setState(() {
+      // Atualizar o estado do widget aqui, se necessário
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +86,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                 height: 40,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: salvarProduto,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
                     foregroundColor: Colors.white,

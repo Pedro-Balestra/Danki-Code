@@ -6,9 +6,9 @@ import 'package:sqflite/sqflite.dart';
 import '../model/produtos.dart';
 
 class ProdutosHelpers {
-  //Atributos
-  static late Database _database;
-  static late ProdutosHelpers _databaseHelper;
+  // Atributos
+  static Database? _database;
+  static ProdutosHelpers? _databaseHelper;
 
   ProdutosHelpers._createInstance();
 
@@ -17,10 +17,10 @@ class ProdutosHelpers {
       _databaseHelper = ProdutosHelpers._createInstance();
     }
 
-    return _databaseHelper;
+    return _databaseHelper!;
   }
 
-  //Definir a estrutura da tabela
+  // Definir a estrutura da tabela
 
   String nomeTabela = 'tb_produtos';
 
@@ -29,7 +29,7 @@ class ProdutosHelpers {
   String colunaFab = 'fabricante';
   String colunaPreco = 'preco';
 
-  //1 Passo - Metodo que cria o banco de dados
+  // 1 Passo - Método que cria o banco de dados
   void _criarBanco(Database db, int version) async {
     String sql = """CREATE TABLE $nomeTabela(
       $colunaId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,9 +41,9 @@ class ProdutosHelpers {
     await db.execute(sql);
   }
 
-  //2 passo - Criar o metodo que inicializa o banco de dados
+  // 2 passo - Criar o método que inicializa o banco de dados
   Future<Database> inicializaBanco() async {
-    //Pegar o caminho do Android ou IOS para salvar o banco de dados
+    // Pegar o caminho do Android ou IOS para salvar o banco de dados
     Directory directory = await getApplicationDocumentsDirectory();
     String caminho = '${directory.path}bdprodutos.bd';
 
@@ -53,24 +53,20 @@ class ProdutosHelpers {
     return bancoDeDados;
   }
 
-  //3 passo - Criar metodo que verifica se o banco foi Inicializado
+  // 3 passo - Criar método que verifica se o banco foi inicializado
   Future<Database> get database async {
     if (_database == null) {
       _database = await inicializaBanco();
     }
 
-    //Metodos CRUD
-    //Creat, Read, Update e Delete
+    return _database!;
+  }
 
-    //Metodo CadastrarProdutos
-    Future<int> cadastraProduto(Produtos obj) async {
-      //1 passo -Selecionar o banco
-      Database db = await this.database;
-      var resposta = await db.insert(nomeTabela, obj.toMap());
+  Future<int> cadastraProduto(Produtos obj) async {
+    // 1 passo - Selecionar o banco
+    Database db = await this.database;
+    var resposta = await db.insert(nomeTabela, obj.toMap());
 
-      return resposta;
-    }
-
-    return _database;
+    return resposta;
   }
 }

@@ -1,6 +1,6 @@
 class Produtos {
   //Atributos
-  late int id;
+  int? id = 0;
   late String nome;
   late String fabricante;
   late double preco;
