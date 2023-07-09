@@ -69,4 +69,20 @@ class ProdutosHelpers {
 
     return resposta;
   }
+
+  //Metodo lista produtos
+
+  listarProdutos() async {
+    // 1 passo - Selecionar o banco
+    Database db = await this.database;
+
+    // 2 passo - Definir o comando SQL
+    String sql = "select * from $nomeTabela";
+
+    // 3 passo - Criar uma lista para armazenar os itens, e executa o comando
+    List lista = (await db.rawInsert(sql)) as List;
+
+    // 4 passo - Retornar a lista
+    return lista;
+  }
 }
