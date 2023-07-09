@@ -85,4 +85,28 @@ class ProdutosHelpers {
     // 4 passo - Retornar a lista
     return lista;
   }
+
+  //Método Excluir Produto
+  //delete from tbprodutos where id = 5
+  Future<int> excluirProduto(int id) async {
+    // 1 passo - Selecionar o banco
+    Database db = await this.database;
+
+    var resultado =
+        await db.delete(nomeTabela, where: "id = ?", whereArgs: [id]);
+
+    return resultado;
+  }
+
+  //Método Alterar Produto
+  //update from tbprodutos set nome = leite desnatado, preco=20  where id = 5
+  Future<int> alterarProduto(Produtos obj) async {
+    // 1 passo - Selecionar o banco
+    Database db = await this.database;
+
+    var resultado = await db
+        .update(nomeTabela, obj.toMap(), where: "id = ?", whereArgs: [obj.id]);
+
+    return resultado;
+  }
 }

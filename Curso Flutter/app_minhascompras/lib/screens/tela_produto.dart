@@ -57,9 +57,17 @@ class _TelaProdutosState extends State<TelaProdutos> {
                 final Produtos p = listaDeProdutos[index];
                 return Card(
                   child: ListTile(
-                    title: Text(p.nome),
+                    title: Text(
+                      p.nome,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                     subtitle: Text(
-                      p.preco.toString(),
+                      "R\$ ${p.preco}",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                 );
