@@ -20,20 +20,20 @@ class _TelaCadastroState extends State<TelaCadastro> {
 
   Future<void> salvarProduto() async {
     //1 passo - Criar objeto Model para pegar os dados da tela
-    Produtos obj = Produtos(
-      null,
-      txtnome.text,
-      txtfabricante.text,
-      double.parse(txtpreco.text),
-    );
-
-    int resultado = await db.cadastraProduto(obj);
-    if (resultado != null) {
-      print("Cadastrado com sucesso! " + resultado.toString());
-    }
 
     setState(() {
       // Atualizar o estado do widget aqui, se necessário
+      Produtos obj = Produtos(
+        null,
+        txtnome.text,
+        txtfabricante.text,
+        double.parse(txtpreco.text),
+      );
+
+      int resultado = db.cadastraProduto(obj) as int;
+      if (resultado != null) {
+        print("Cadastrado com sucesso! " + resultado.toString());
+      }
     });
   }
 

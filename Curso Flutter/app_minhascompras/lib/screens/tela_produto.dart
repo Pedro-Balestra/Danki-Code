@@ -1,3 +1,4 @@
+import 'package:app_minhascompras/model/produtos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -12,21 +13,58 @@ class TelaProdutos extends StatefulWidget {
 }
 
 class _TelaProdutosState extends State<TelaProdutos> {
+  //1 passo - Criar a lista de objetos do tipo Produto
+  List<Produtos> listaDeProdutos = <Produtos>[];
+
   ProdutosHelpers db = ProdutosHelpers();
 
   void recuperarProdutos() async {
     List produtosRecuperados = await db.listarProdutos();
-    print("Produtos cadastrados: " + produtosRecuperados.toString());
+    //2 passo - Converter os itens da lista produtosRecuperados, para a lista de objetos do tipo Produto
+    List<Produtos> listaTemporaria = <Produtos>[];
+
+    for (var item in produtosRecuperados) {
+      Produtos obj = Produtos.deMapParaModel(item);
+      listaTemporaria.add(obj);
+    }
+
+    setState(() {
+      listaDeProdutos = listaTemporaria;
+    });
+  }
+
+  void initSate() {
+    super.initState();
+    recuperarProdutos();
   }
 
   @override
   Widget build(BuildContext context) {
-    recuperarProdutos();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Meus Produtos'),
         centerTitle: true,
         backgroundColor: Colors.blueGrey,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: listaDeProdutos.length,
+              itemBuilder: (context, index) {
+                final Produtos p = listaDeProdutos[index];
+                return Card(
+                  child: ListTile(
+                    title: Text(p.nome),
+                    subtitle: Text(
+                      p.preco.toString(),
+                    ),
+                  ),
+                );
+              },
+            ),
+          )
+        ],
       ),
     );
   }
