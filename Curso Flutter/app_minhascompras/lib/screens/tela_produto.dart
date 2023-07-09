@@ -69,6 +69,28 @@ class _TelaProdutosState extends State<TelaProdutos> {
                         color: Colors.red,
                       ),
                     ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        GestureDetector(
+                          onTap: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.only(right: 16.0),
+                            child: Icon(
+                              Icons.delete,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: const Icon(
+                            Icons.edit,
+                            color: Colors.blueGrey,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
