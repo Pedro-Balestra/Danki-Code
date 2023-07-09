@@ -36,7 +36,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
         txtfabricante.text,
         double.parse(txtpreco.text),
       );
-      resultado = await db.alterarProduto(obj);
+      resultado = await db.cadastraProduto(obj);
 
       print("Cadastrado com sucesso! " + resultado.toString());
     }
@@ -48,7 +48,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
       p.preco = double.parse(txtpreco.text);
       p.id = idProduto;
 
-      resultado = await db.cadastraProduto(p);
+      resultado = await db.alterarProduto(p);
 
       Navigator.push(
         context,
