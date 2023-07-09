@@ -1,4 +1,5 @@
 import 'package:app_minhascompras/screens/home.dart';
+import 'package:app_minhascompras/screens/tela_cadastro.dart';
 import 'package:app_minhascompras/screens/tela_produto.dart';
 import 'package:flutter/material.dart';
 

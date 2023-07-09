@@ -22,6 +22,7 @@ class _TelaProdutosState extends State<TelaProdutos> {
     List produtosRecuperados = await db.listarProdutos();
     //2 passo - Converter os itens da lista produtosRecuperados, para a lista de objetos do tipo Produto
     List<Produtos> listaTemporaria = <Produtos>[];
+    print("Produtos Cadastrados: " + produtosRecuperados.toString());
 
     for (var item in produtosRecuperados) {
       Produtos obj = Produtos.deMapParaModel(item);
@@ -33,7 +34,8 @@ class _TelaProdutosState extends State<TelaProdutos> {
     });
   }
 
-  void initSate() {
+  @override
+  void initState() {
     super.initState();
     recuperarProdutos();
   }

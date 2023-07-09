@@ -1,4 +1,5 @@
 import 'package:app_minhascompras/screens/tela_cadastro.dart';
+import 'package:app_minhascompras/screens/tela_produto.dart';
 import 'package:flutter/material.dart';
 
 Widget menuDrawer(BuildContext context) {
@@ -59,15 +60,20 @@ Widget menuDrawer(BuildContext context) {
                 MaterialPageRoute(builder: (context) => const TelaCadastro()));
           },
         ),
-        const ListTile(
-          leading: Icon(
+        ListTile(
+          leading: const Icon(
             Icons.food_bank,
             color: Colors.blueGrey,
           ),
-          title: Text(
+          title: const Text(
             'Meus Produtos',
             style: TextStyle(fontSize: 16),
           ),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const TelaProdutos()));
+          },
         ),
       ],
     ),

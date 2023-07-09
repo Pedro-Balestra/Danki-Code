@@ -20,21 +20,18 @@ class _TelaCadastroState extends State<TelaCadastro> {
 
   Future<void> salvarProduto() async {
     //1 passo - Criar objeto Model para pegar os dados da tela
+    Produtos obj = Produtos(
+      null,
+      txtnome.text,
+      txtfabricante.text,
+      double.parse(txtpreco.text),
+    );
 
-    setState(() {
-      // Atualizar o estado do widget aqui, se necessário
-      Produtos obj = Produtos(
-        null,
-        txtnome.text,
-        txtfabricante.text,
-        double.parse(txtpreco.text),
-      );
-
-      int resultado = db.cadastraProduto(obj) as int;
-      if (resultado != null) {
-        print("Cadastrado com sucesso! " + resultado.toString());
-      }
-    });
+    int? resultado = await db.cadastraProduto(obj);
+    if (resultado != null) {
+      print("Cadastrado com sucesso! " + resultado.toString());
+    }
+    // Atualizar o estado do widget aqui, se necessário
   }
 
   @override
@@ -46,58 +43,59 @@ class _TelaCadastroState extends State<TelaCadastro> {
         backgroundColor: Colors.blueGrey,
       ),
       body: SingleChildScrollView(
-          child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Form(
-          key: null,
-          child: Column(
-            children: [
-              TextFormField(
-                controller: txtnome,
-                keyboardType: TextInputType.text,
-                textAlign: TextAlign.center,
-                decoration: const InputDecoration(labelText: "Alimento"),
-                style: const TextStyle(fontSize: 20),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                controller: txtfabricante,
-                keyboardType: TextInputType.text,
-                textAlign: TextAlign.center,
-                decoration: const InputDecoration(labelText: "Fabricante"),
-                style: const TextStyle(fontSize: 20),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                controller: txtpreco,
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                decoration: const InputDecoration(labelText: "Preço"),
-                style: const TextStyle(fontSize: 20),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                height: 40,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: salvarProduto,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueGrey,
-                    foregroundColor: Colors.white,
-                  ),
-                  child: const Text('Adicionar produto'),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Form(
+            key: null,
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: txtnome,
+                  keyboardType: TextInputType.text,
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(labelText: "Alimento"),
+                  style: const TextStyle(fontSize: 20),
                 ),
-              )
-            ],
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  controller: txtfabricante,
+                  keyboardType: TextInputType.text,
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(labelText: "Fabricante"),
+                  style: const TextStyle(fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  controller: txtpreco,
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(labelText: "Preço"),
+                  style: const TextStyle(fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 40,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: salvarProduto,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blueGrey,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Text('Adicionar produto'),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
-      )),
+      ),
     );
   }
 }
