@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import '../util/produtosHelpers.dart';
 
 class TelaCadastro extends StatefulWidget {
-  const TelaCadastro({super.key});
+  TelaCadastro({super.key, this.produto});
+
+  Produtos? produto;
 
   @override
   State<TelaCadastro> createState() => _TelaCadastroState();
@@ -17,6 +19,9 @@ class _TelaCadastroState extends State<TelaCadastro> {
   TextEditingController txtpreco = TextEditingController();
 
   ProdutosHelpers db = ProdutosHelpers();
+
+  String textoBotao = "Adicionar Produto";
+  String tittleAppBar = "Cadastro de Produto";
 
   Future<void> salvarProduto() async {
     //1 passo - Criar objeto Model para pegar os dados da tela
@@ -35,10 +40,23 @@ class _TelaCadastroState extends State<TelaCadastro> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    if (widget.produto != null) {
+      txtnome.text = widget.produto!.nome;
+      txtfabricante.text = widget.produto!.fabricante;
+      txtpreco.text = widget.produto!.preco.toString();
+
+      textoBotao = "Editar Produto";
+      tittleAppBar = "Editar Produto";
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cadastro de Produto'),
+        title: Text(tittleAppBar),
         centerTitle: true,
         backgroundColor: Colors.blueGrey,
       ),
@@ -88,7 +106,7 @@ class _TelaCadastroState extends State<TelaCadastro> {
                       backgroundColor: Colors.blueGrey,
                       foregroundColor: Colors.white,
                     ),
-                    child: const Text('Adicionar produto'),
+                    child: Text(textoBotao),
                   ),
                 )
               ],

@@ -1,4 +1,5 @@
 import 'package:app_minhascompras/model/produtos.dart';
+import 'package:app_minhascompras/screens/tela_cadastro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -128,7 +129,14 @@ class _TelaProdutosState extends State<TelaProdutos> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            exibirTelaConfirma(p.id!);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => TelaCadastro(
+                                  produto: p,
+                                ),
+                              ),
+                            );
                           },
                           child: const Icon(
                             Icons.edit,

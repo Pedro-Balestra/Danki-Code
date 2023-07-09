@@ -57,7 +57,7 @@ Widget menuDrawer(BuildContext context) {
           onTap: () {
             Navigator.pop(context);
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const TelaCadastro()));
+                MaterialPageRoute(builder: (context) => TelaCadastro()));
           },
         ),
         ListTile(
