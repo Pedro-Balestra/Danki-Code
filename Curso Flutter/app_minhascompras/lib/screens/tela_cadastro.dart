@@ -125,6 +125,12 @@ class _TelaCadastroState extends State<TelaCadastro> {
                   child: ElevatedButton(
                     onPressed: () {
                       salvarProduto(p: widget.produto);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Home(),
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blueGrey,
