@@ -77,10 +77,10 @@ class ProdutosHelpers {
     Database db = await this.database;
 
     // 2 passo - Definir o comando SQL
-    String sql = "select * from $nomeTabela";
+    String sql = 'select * from $nomeTabela';
 
     // 3 passo - Criar uma lista para armazenar os itens, e executa o comando
-    List lista = (await db.rawInsert(sql)) as List;
+    List lista = await db.rawQuery(sql);
 
     // 4 passo - Retornar a lista
     return lista;

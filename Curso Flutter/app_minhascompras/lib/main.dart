@@ -1,4 +1,5 @@
 import 'package:app_minhascompras/screens/home.dart';
+import 'package:app_minhascompras/screens/tela_produto.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Home(),
+      home: const TelaProdutos(),
     );
   }
 }
