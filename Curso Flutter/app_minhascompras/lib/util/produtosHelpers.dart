@@ -4,6 +4,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 class ProdutosHelpers {
+  //Atributos
+  late Database _database;
+
   //Definir a estrutura da tabela
 
   String nomeTabela = 'tb_produtos';
@@ -35,5 +38,14 @@ class ProdutosHelpers {
         await openDatabase(caminho, version: 1, onCreate: _criarBanco);
 
     return bancoDeDados;
+  }
+
+  //3 passo - Criar metodo que verifica se o banco foi Inicializado
+  Future<Database> get database async {
+    if (_database == null) {
+      _database = await inicializaBanco();
+    }
+
+    return _database;
   }
 }
