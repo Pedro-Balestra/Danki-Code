@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import '../widgets/widgetAppBar.dart';
+import '../widgets/widgetButton.dart';
+import '../widgets/widgetSlider.dart';
+import '../widgets/widgetTextFormField.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -82,11 +86,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Racha Conta"),
-        centerTitle: true,
-        backgroundColor: const Color(0xffff6600),
-      ),
+      appBar: wAppBar(),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
@@ -103,14 +103,9 @@ class _HomeState extends State<Home> {
                   const SizedBox(
                     height: 10,
                   ),
-                  TextFormField(
+                  WidgetTextFormField(
                     controller: txtTotal,
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                      labelText: "Total da conta",
-                    ),
-                    style: const TextStyle(fontSize: 18),
+                    labelText: 'Total da conta',
                     validator: (valor) {
                       if (valor!.isEmpty) {
                         return "Campo obrigatório";
@@ -122,68 +117,42 @@ class _HomeState extends State<Home> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Text(
-                        "Taxa de Serviços %: ",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Slider(
-                        value: taxa,
-                        min: 0,
-                        max: 10,
-                        label: "Taxa $taxa %",
-                        divisions: 10,
-                        activeColor: const Color(0xffff6600),
-                        inactiveColor: Colors.orange[100],
-                        onChanged: (double valor) {
-                          setState(() {
-                            taxa = valor;
-                          });
+                  WidgetSlider(
+                    value: taxa,
+                    min: 0,
+                    max: 10,
+                    labelText: 'Taxa de serviço %',
+                    label: 'Taxa',
+                    divisions: 10,
+                    onChanged: (double valor) {
+                      setState(
+                        () {
+                          taxa = valor;
                         },
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                  TextFormField(
-                      controller: txtQtd,
-                      keyboardType: TextInputType.number,
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        labelText: "Quantidade de Pessoas",
-                      ),
-                      style: const TextStyle(fontSize: 18),
-                      validator: (valor) {
-                        if (valor!.isEmpty) {
-                          return "Campo obrigatório";
-                        } else {
-                          return null;
-                        }
-                      }),
+                  WidgetTextFormField(
+                    controller: txtQtd,
+                    labelText: 'Quantidade de pessoas',
+                    validator: (valor) {
+                      if (valor!.isEmpty) {
+                        return "Campo obrigatório";
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (_formkey.currentState!.validate()) {
-                          calcularConta();
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xffff6600),
-                        foregroundColor: Colors.white,
-                      ),
-                      child: const Text(
-                        "Calcular",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
+                  Widgetbutton(
+                    onPressed: () {
+                      if (_formkey.currentState!.validate()) {
+                        calcularConta();
+                      }
+                    },
+                    label: "Calcular",
                   ),
                 ],
               ),
