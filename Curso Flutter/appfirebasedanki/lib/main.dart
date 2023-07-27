@@ -17,16 +17,23 @@ void main() async {
   //   "ativo": "true",
   // });
 
-  DocumentReference ref = await db.collection("produtos").add({
-    "nome": "Notebook da Dell",
-    "preco": "4000",
-    "ativo": "false",
-  });
+  // DocumentReference ref = await db.collection("produtos").add({
+  //   "nome": "Notebook da Dell",
+  //   "preco": "4000",
+  //   "ativo": "false",
+  // });
 
-  print("Id do ultimo registro: " + ref.id);
+  // print("Id do ultimo registro: " + ref.id);
 
   //Como excluir um registro no banco de dados
   // db.collection("produtos").doc("002").delete();
+
+  //Como listar dados do firebase
+  //1° Forma - Lista somente um documento
+  DocumentSnapshot snapshot = await db.collection("produtos").doc("001").get();
+  Map<String, dynamic> dados = snapshot.data() as Map<String, dynamic>;
+  print("Nome do produto: " + dados["nome"]);
+  print("Valor do produto: " + dados["preco"]);
 
   runApp(const MyApp());
 }
