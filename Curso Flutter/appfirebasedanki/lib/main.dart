@@ -17,8 +17,16 @@ void main() async {
   //   "ativo": "true",
   // });
 
+  DocumentReference ref = await db.collection("produtos").add({
+    "nome": "Notebook da Dell",
+    "preco": "4000",
+    "ativo": "false",
+  });
+
+  print("Id do ultimo registro: " + ref.id);
+
   //Como excluir um registro no banco de dados
-  db.collection("produtos").doc("002").delete();
+  // db.collection("produtos").doc("002").delete();
 
   runApp(const MyApp());
 }
