@@ -30,10 +30,19 @@ void main() async {
 
   //Como listar dados do firebase
   //1° Forma - Lista somente um documento
-  DocumentSnapshot snapshot = await db.collection("produtos").doc("001").get();
-  Map<String, dynamic> dados = snapshot.data() as Map<String, dynamic>;
-  print("Nome do produto: " + dados["nome"]);
-  print("Valor do produto: " + dados["preco"]);
+  // DocumentSnapshot snapshot = await db.collection("produtos").doc("001").get();
+  // Map<String, dynamic> dados = snapshot.data() as Map<String, dynamic>;
+  // print("Nome do produto: " + dados["nome"]);
+  // print("Valor do produto: " + dados["preco"]);
+
+  //2° Forma - Listar uma lista de documentos
+  QuerySnapshot querySnapshot = await db.collection("produtos").get();
+
+  for (DocumentSnapshot item in querySnapshot.docs) {
+    Map<String, dynamic> dados = item.data() as Map<String, dynamic>;
+
+    print("Dados: " + dados.toString());
+  }
 
   runApp(const MyApp());
 }
