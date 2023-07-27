@@ -36,13 +36,21 @@ void main() async {
   // print("Valor do produto: " + dados["preco"]);
 
   //2° Forma - Listar uma lista de documentos
-  QuerySnapshot querySnapshot = await db.collection("produtos").get();
+  // QuerySnapshot querySnapshot = await db.collection("produtos").get();
 
-  for (DocumentSnapshot item in querySnapshot.docs) {
-    Map<String, dynamic> dados = item.data() as Map<String, dynamic>;
+  // for (DocumentSnapshot item in querySnapshot.docs) {
+  //   Map<String, dynamic> dados = item.data() as Map<String, dynamic>;
 
-    print("Dados: " + dados.toString());
-  }
+  //   print("Dados: " + dados.toString());
+  // }
+
+  //3° Forma - Listando de maneira que o firebase nos notifique caso tenha alguma mudança
+  db.collection("produtos").snapshots().listen((snapshot) {
+    for (DocumentSnapshot item in snapshot.docs) {
+      Map<String, dynamic> dados = item.data() as Map<String, dynamic>;
+      print("Dados: " + dados.toString());
+    }
+  });
 
   runApp(const MyApp());
 }
