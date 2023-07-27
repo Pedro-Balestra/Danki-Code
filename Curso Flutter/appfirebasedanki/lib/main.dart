@@ -11,11 +11,14 @@ void main() async {
 
   FirebaseFirestore db = FirebaseFirestore.instance;
 
-  db.collection("produtos").doc("002").set({
-    "nome": "Bolacha Trakinas",
-    "preco": "3.90",
-    "ativo": "true",
-  });
+  // db.collection("produtos").doc("002").set({
+  //   "nome": "Bolacha Trakinas de morango",
+  //   "preco": "1.90",
+  //   "ativo": "true",
+  // });
+
+  //Como excluir um registro no banco de dados
+  db.collection("produtos").doc("002").delete();
 
   runApp(const MyApp());
 }
