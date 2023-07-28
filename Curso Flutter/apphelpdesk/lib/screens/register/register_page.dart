@@ -1,7 +1,7 @@
 import 'package:apphelpdesk/util/appcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -20,10 +20,47 @@ class _RegisterPageState extends State<RegisterPage> {
         backgroundColor: AppColors.primaryColor,
       ),
       body: Container(
+        width: double.infinity,
         child: Column(
           children: [
             lottieAnimation(),
-            const Text("Cadastro"),
+            Text(
+              "Cadastro",
+              style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                  fontSize: 40,
+                  color: AppColors.textColorBlue,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            Text(
+              "Crie sua conta agora mesmo!",
+              style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                  fontSize: 22,
+                  color: AppColors.textColorBlue,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              width: double.infinity,
+              height: 50,
+              color: AppColors.primaryOpacityColor,
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Nome",
+                  hintStyle: TextStyle(color: AppColors.primaryColor),
+                  border: InputBorder.none,
+                  contentPadding: const EdgeInsets.all(15),
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: AppColors.primaryColor,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
