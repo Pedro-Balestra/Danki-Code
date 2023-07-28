@@ -21,47 +21,93 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       body: Container(
         width: double.infinity,
-        child: Column(
-          children: [
-            lottieAnimation(),
-            Text(
-              "Cadastro",
-              style: GoogleFonts.poppins(
-                textStyle: TextStyle(
-                  fontSize: 40,
-                  color: AppColors.textColorBlue,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Text(
-              "Crie sua conta agora mesmo!",
-              style: GoogleFonts.poppins(
-                textStyle: TextStyle(
-                  fontSize: 22,
-                  color: AppColors.textColorBlue,
-                ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              width: double.infinity,
-              height: 50,
-              color: AppColors.primaryOpacityColor,
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Nome",
-                  hintStyle: TextStyle(color: AppColors.primaryColor),
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.all(15),
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: AppColors.primaryColor,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              lottieAnimation(),
+              Text(
+                "Cadastro",
+                style: GoogleFonts.poppins(
+                  textStyle: TextStyle(
+                    fontSize: 40,
+                    color: AppColors.textColorBlue,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-            )
-          ],
+              Text(
+                "Crie sua conta agora mesmo!",
+                style: GoogleFonts.poppins(
+                  textStyle: TextStyle(
+                    fontSize: 22,
+                    color: AppColors.textColorBlue,
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                width: double.infinity,
+                height: 50,
+                color: AppColors.primaryOpacityColor,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Nome",
+                    hintStyle: TextStyle(color: AppColors.primaryColor),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.all(15),
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                width: double.infinity,
+                height: 50,
+                color: AppColors.primaryOpacityColor,
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    hintText: "Email",
+                    hintStyle: TextStyle(color: AppColors.primaryColor),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.all(15),
+                    prefixIcon: Icon(
+                      Icons.email,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                width: double.infinity,
+                height: 50,
+                color: AppColors.primaryOpacityColor,
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: "Senha",
+                    hintStyle: TextStyle(color: AppColors.primaryColor),
+                    border: InputBorder.none,
+                    contentPadding: const EdgeInsets.all(15),
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
