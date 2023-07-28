@@ -1,4 +1,6 @@
+import 'package:apphelpdesk/model/users.dart';
 import 'package:apphelpdesk/util/appcolors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,7 +33,16 @@ class _RegisterPageState extends State<RegisterPage> {
           msgErro = "Preencha a senha com mais de 6 caracteres!";
         } else {
           //Cadastre no banco de dados
-          cadastrarUsuario();
+
+          //1 Pass - recber os dados da interface em um objeto model
+          Users user = new Users();
+
+          user.nome = nome;
+          user.senha = senha;
+          user.email = email;
+
+          //2 Passo - Executar o metodo cadastrarUsuario(user)
+          cadastrarUsuario(user);
         }
       }
     } else {
@@ -40,7 +51,26 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   //Metodo que cadastra no Firebase o usuário
-  void cadastrarUsuario() {}
+  void cadastrarUsuario(user) async {
+    //1 Passo - instarciar o firebase
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    auth
+        .createUserWithEmailAndPassword(email: user.email, password: user.senha)
+        .then(
+      (firebaseUser) {
+        const SnackBar snackBar = SnackBar(
+          content: Text("Cadastrado com sucesso"),
+          duration: Duration(seconds: 5),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      },
+    ).catchError((erro) {
+      print(
+        "Aconteceu o erro: " + erro.toString(),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 50,
                 color: AppColors.primaryOpacityColor,
                 child: TextField(
-                  controller: senhaController,
+                  controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: "Email",
@@ -158,7 +188,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     "Cadastrar",
                     style: TextStyle(fontSize: 20),
                   ),
-                  onPressed: () {},
+                  onPressed: validaCampos,
                 ),
               ),
               const SizedBox(
