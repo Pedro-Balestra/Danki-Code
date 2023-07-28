@@ -12,6 +12,36 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  //Controllers dos TextField
+  TextEditingController nomeController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController senhaController = TextEditingController();
+
+  String msgErro = "";
+
+  void validaCampos() {
+    //1 Passo - Recuperar os dados
+    String nome = nomeController.text;
+    String email = emailController.text;
+    String senha = senhaController.text;
+    //2 Passo - Validar os dados
+    if (nome.isNotEmpty) {
+      if (email.isNotEmpty && email.contains("@")) {
+        if (senha.isNotEmpty && senha.length < 6) {
+          msgErro = "Preencha a senha com mais de 6 caracteres!";
+        } else {
+          //Cadastre no banco de dados
+          cadastrarUsuario();
+        }
+      }
+    } else {
+      msgErro = "Preencha o campo nome!";
+    }
+  }
+
+  //Metodo que cadastra no Firebase o usuário
+  void cadastrarUsuario() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 50,
                 color: AppColors.primaryOpacityColor,
                 child: TextField(
+                  controller: nomeController,
                   decoration: InputDecoration(
                     hintText: "Nome",
                     hintStyle: TextStyle(color: AppColors.primaryColor),
@@ -75,6 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 50,
                 color: AppColors.primaryOpacityColor,
                 child: TextField(
+                  controller: senhaController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: "Email",
@@ -97,6 +129,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 50,
                 color: AppColors.primaryOpacityColor,
                 child: TextField(
+                  controller: senhaController,
                   obscureText: true,
                   decoration: InputDecoration(
                     hintText: "Senha",
