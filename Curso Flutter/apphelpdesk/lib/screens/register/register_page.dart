@@ -16,8 +16,9 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("cadastre-se"),
+        title: const Text("Crie sua conta"),
         backgroundColor: AppColors.primaryColor,
+        centerTitle: true,
       ),
       body: Container(
         width: double.infinity,
@@ -43,6 +44,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: AppColors.textColorBlue,
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -106,6 +110,42 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryColor,
+                  ),
+                  child: const Text(
+                    "Cadastrar",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.buttonRed,
+                  ),
+                  child: const Text(
+                    "Voltar",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {},
+                ),
+              ),
             ],
           ),
         ),
@@ -115,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget lottieAnimation() {
     return Container(
-      margin: const EdgeInsets.only(top: 1, bottom: 10),
+      margin: const EdgeInsets.only(top: 1, bottom: 5),
       child: Lottie.asset("assets/animations/animacao-user.json",
           width: 250, height: 250, fit: BoxFit.fill),
     );
