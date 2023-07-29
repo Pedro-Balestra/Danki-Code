@@ -159,8 +159,11 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget lottieAnimation() {
     return Container(
-      margin: const EdgeInsets.only(top: 100, bottom: 5),
-      child: Lottie.asset("assets/animations/animacao-user.json",
+      margin: const EdgeInsets.only(
+        top: 100,
+        bottom: 5,
+      ),
+      child: Lottie.asset("assets/animations/animacao-helpdesk.json",
           width: 250, height: 250, fit: BoxFit.fill),
     );
   }
