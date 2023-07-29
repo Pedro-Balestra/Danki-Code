@@ -103,7 +103,9 @@ class _LoginPageState extends State<LoginPage> {
                       width: 5,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, 'register');
+                      },
                       child: Text(
                         "Criar uma conta",
                         style: GoogleFonts.poppins(
